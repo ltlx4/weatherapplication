@@ -1,0 +1,8 @@
+[build]
+  publish = "public"
+  command = "echo 'OPENWEATHER_API_KEY=$OPENWEATHER_API_KEY' > public/js/config.js && echo 'Build complete'"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
