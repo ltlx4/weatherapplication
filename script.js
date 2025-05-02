@@ -1,6 +1,3 @@
-// API Key - Sign up at https://openweathermap.org/api to get your own free API key
-const API_KEY = process.env.OPENWEATHER_API_KEY;
-
 // DOM Elements
 const cityInput = document.getElementById('city-input');
 const searchBtn = document.getElementById('search-btn');
@@ -43,12 +40,11 @@ window.addEventListener('load', () => {
     getWeatherData('London'); // Default city
 });
 
-// Functions
 async function getWeatherData(city) {
     try {
         // Current weather
         const currentResponse = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
+            `/.netlify/functions/weather?city=${city}&type=current`
         );
         
         if (!currentResponse.ok) {
@@ -59,7 +55,7 @@ async function getWeatherData(city) {
         
         // Forecast (5 days)
         const forecastResponse = await fetch(
-            `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`
+            `/.netlify/functions/weather?city=${city}&type=forecast`
         );
         const forecastData = await forecastResponse.json();
         
@@ -121,9 +117,8 @@ function getLocationWeather() {
             async (position) => {
                 const { latitude, longitude } = position.coords;
                 try {
-                    // Reverse geocoding to get city name
                     const geoResponse = await fetch(
-                        `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`
+                        `/.netlify/functions/weather?lat=${latitude}&lon=${longitude}&type=geocode`
                     );
                     const geoData = await geoResponse.json();
                     
@@ -146,6 +141,7 @@ function getLocationWeather() {
         showError('Geolocation is not supported by your browser');
     }
 }
+
 
 function showError(message) {
     errorMessage.textContent = message;
