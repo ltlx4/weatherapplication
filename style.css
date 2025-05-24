@@ -1,11 +1,14 @@
 :root {
-    --primary-color: #4361ee;
-    --secondary-color: #3f37c9;
-    --text-color: #333;
-    --light-color: #f8f9fa;
-    --dark-color: #212529;
-    --success-color: #4bb543;
-    --error-color: #ff3333;
+    --primary-color: #0ea5e9;
+    --secondary-color: #0284c7;
+    --text-color: #e2e8f0;
+    --light-color: #1e293b;
+    --dark-color: #0f172a;
+    --success-color: #22c55e;
+    --error-color: #ef4444;
+    --card-bg: #1e293b;
+    --input-bg: #334155;
+    --hover-bg: #475569;
 }
 
 * {
@@ -16,10 +19,11 @@
 }
 
 body {
-    background-color: #f0f2f5;
+    background-color: var(--dark-color);
     color: var(--text-color);
     line-height: 1.6;
     padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -43,15 +47,18 @@ h1 {
 #city-input {
     flex: 1;
     padding: 12px 15px;
-    border: 2px solid #ddd;
+    border: 2px solid var(--hover-bg);
     border-radius: 8px;
     font-size: 16px;
-    transition: border-color 0.3s;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: border-color 0.3s, background-color 0.3s;
 }
 
 #city-input:focus {
     outline: none;
     border-color: var(--primary-color);
+    background-color: var(--hover-bg);
 }
 
 button {
@@ -62,18 +69,20 @@ button {
     color: white;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
     background-color: var(--secondary-color);
+    transform: scale(1.05);
 }
 
 .weather-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s;
 }
 
 .weather-header {
@@ -87,7 +96,7 @@ button:hover {
 }
 
 .weather-header p {
-    color: #666;
+    color: #cbd5e1;
     font-size: 14px;
 }
 
@@ -96,6 +105,7 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .temperature {
@@ -116,7 +126,7 @@ button:hover {
 
 .unit {
     font-size: 24px;
-    color: #666;
+    color: #94a3b8;
 }
 
 .weather-details {
@@ -125,7 +135,7 @@ button:hover {
 
 .weather-details p {
     margin-bottom: 8px;
-    color: #555;
+    color: #cbd5e1;
 }
 
 .weather-details i {
@@ -145,8 +155,15 @@ button:hover {
     min-width: 100px;
     text-align: center;
     padding: 15px;
-    background-color: #f8f9fa;
+    background-color: var(--input-bg);
     border-radius: 8px;
+    color: var(--text-color);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.forecast-item:hover {
+    background-color: var(--hover-bg);
+    transform: translateY(-4px);
 }
 
 .forecast-item p:first-child {
@@ -186,4 +203,4 @@ button:hover {
     .search-container {
         flex-direction: column;
     }
-}   
+}
