@@ -204,3 +204,14 @@ button:hover {
         flex-direction: column;
     }
 }
+ .footer {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--text-color);
+    font-size: 14px;
+ }
+
+ .footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+ }
