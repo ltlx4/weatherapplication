@@ -37,7 +37,7 @@ cityInput.addEventListener('keypress', (e) => {
 
 // Initialize with default city
 window.addEventListener('load', () => {
-    getWeatherData('London'); // Default city
+    getWeatherData('Budapest'); // Default city
 });
 
 async function getWeatherData(city) {
